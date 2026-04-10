@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
         textField.leftViewMode = .always
         textField.placeholder = "아이디"
         textField.font = .Pretendard.semiBold(ofSize: 14)
-        textField.backgroundColor = .lightGray
+        textField.backgroundColor = UIColor(red: 221/255, green: 222/255, blue: 227/255, alpha: 1)
         textField.layer.cornerRadius = 5
         textField.clearButtonMode = .whileEditing
         
@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
         textField.leftViewMode = .always
         textField.placeholder = "비밀번호"
         textField.font = .Pretendard.semiBold(ofSize: 14)
-        textField.backgroundColor = .lightGray
+        textField.backgroundColor = UIColor(red: 221/255, green: 222/255, blue: 227/255, alpha: 1)
         textField.layer.cornerRadius = 5
         textField.clearButtonMode = .whileEditing
         
