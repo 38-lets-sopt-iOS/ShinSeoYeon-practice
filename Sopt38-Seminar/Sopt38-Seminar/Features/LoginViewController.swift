@@ -34,6 +34,24 @@ class LoginViewController: UIViewController {
         return textField
     }()
     
+    private let autoLoginLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 20, y: 490, width: 120, height: 30))
+        label.text = "자동 로그인"
+        label.textColor = .black
+        label.font = .Pretendard.medium(ofSize: 14)
+        return label
+    }()
+    
+    private let autoLoginSwitch: UISwitch = {
+        let toggle = UISwitch(frame: CGRect(x: 300, y: 490, width: 0, height: 0))
+        
+        toggle.isOn = false
+        toggle.onTintColor = UIColor.orange
+        toggle.thumbTintColor = .white
+        
+        return toggle
+    }()
+    
     private lazy var loginButton : UIButton = {
         let button = UIButton(frame : CGRect(x: 20, y: 422, width: 335, height: 52))
         button.backgroundColor = UIColor(red: 255/255, green: 111/255, blue: 15/255, alpha: 1)
@@ -53,7 +71,14 @@ class LoginViewController: UIViewController {
     }
 
     private func setLayout() {
-        [titleLabel, idTextField, passwordTextField, loginButton].forEach{self.view.addSubview($0)}
+        [
+            titleLabel,
+            idTextField,
+            passwordTextField,
+            loginButton,
+            autoLoginLabel,
+            autoLoginSwitch
+        ].forEach { self.view.addSubview($0) }
     }
     
     @objc
