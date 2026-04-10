@@ -8,7 +8,7 @@ class LoginViewController: UIViewController {
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 2
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = .Pretendard.bold(ofSize: 18)
         return label
     }()
     
@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 23, height: 0))
         textField.leftViewMode = .always
         textField.placeholder = "아이디"
-        textField.font = .boldSystemFont(ofSize: 14)
+        textField.font = .Pretendard.semiBold(ofSize: 14)
         textField.backgroundColor = .lightGray
         textField.layer.cornerRadius = 5
         return textField
@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 23, height: 0))
         textField.leftViewMode = .always
         textField.placeholder = "비밀번호"
-        textField.font = .boldSystemFont(ofSize: 14)
+        textField.font = .Pretendard.semiBold(ofSize: 14)
         textField.backgroundColor = .lightGray
         textField.layer.cornerRadius = 5
         return textField
@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
         button.backgroundColor = UIColor(red: 255/255, green: 111/255, blue: 15/255, alpha: 1)
         button.setTitle("로그인하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.titleLabel?.font = .Pretendard.bold(ofSize: 18)
         button.addTarget(self, action: #selector(loginButtonDidTapped), for: .touchUpInside)
         button.layer.cornerRadius = 5
         return button
