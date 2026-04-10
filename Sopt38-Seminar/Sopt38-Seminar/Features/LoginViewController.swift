@@ -2,8 +2,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    private let titleLabel : UILabel = {
-        let label = UILabel(frame: CGRect(x : 76, y : 169, width: 240, height: 80))
+    private let titleLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 76, y: 169, width: 240, height: 80))
         label.text = "동네라서 가능한 모든것\n당근에서 가까운 이웃과 함께해요."
         label.textColor = .black
         label.textAlignment = .center
@@ -12,8 +12,8 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    private let idTextField : UITextField = {
-        let textField = UITextField(frame: CGRect(x : 20, y : 276, width : 335, height : 52))
+    private let idTextField: UITextField = {
+        let textField = UITextField(frame: CGRect(x: 20, y: 276, width: 335, height: 52))
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 23, height: 0))
         textField.leftViewMode = .always
         textField.placeholder = "아이디"
@@ -21,12 +21,11 @@ class LoginViewController: UIViewController {
         textField.backgroundColor = UIColor(red: 221/255, green: 222/255, blue: 227/255, alpha: 1)
         textField.layer.cornerRadius = 5
         textField.clearButtonMode = .whileEditing
-        
         return textField
     }()
     
-    private let passwordTextField : UITextField = {
-        let textField = UITextField(frame: CGRect(x : 20, y : 335, width : 335, height : 52))
+    private let passwordTextField: UITextField = {
+        let textField = UITextField(frame: CGRect(x: 20, y: 335, width: 335, height: 52))
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 23, height: 0))
         textField.leftViewMode = .always
         textField.placeholder = "비밀번호"
@@ -34,7 +33,7 @@ class LoginViewController: UIViewController {
         textField.backgroundColor = UIColor(red: 221/255, green: 222/255, blue: 227/255, alpha: 1)
         textField.layer.cornerRadius = 5
         textField.clearButtonMode = .whileEditing
-        
+        textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -48,16 +47,14 @@ class LoginViewController: UIViewController {
     
     private let autoLoginSwitch: UISwitch = {
         let toggle = UISwitch(frame: CGRect(x: 295, y: 395, width: 49, height: 31))
-        
         toggle.isOn = false
-        toggle.onTintColor = UIColor.orange
+        toggle.onTintColor = .orange
         toggle.thumbTintColor = .white
-        
         return toggle
     }()
     
-    private lazy var loginButton : UIButton = {
-        let button = UIButton(frame : CGRect(x: 20, y: 515, width: 335, height: 57))
+    private lazy var loginButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 20, y: 515, width: 335, height: 57))
         button.backgroundColor = UIColor(red: 255/255, green: 111/255, blue: 15/255, alpha: 1)
         button.setTitle("로그인하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -71,7 +68,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setLayout()
-        
     }
 
     private func setLayout() {
@@ -79,10 +75,12 @@ class LoginViewController: UIViewController {
             titleLabel,
             idTextField,
             passwordTextField,
-            loginButton,
             autoLoginLabel,
-            autoLoginSwitch
-        ].forEach { self.view.addSubview($0) }
+            autoLoginSwitch,
+            loginButton
+        ].forEach {
+            self.view.addSubview($0)
+        }
     }
     
     @objc
@@ -93,16 +91,13 @@ class LoginViewController: UIViewController {
     private func presentToWelcomeVC() {
         let welcomeViewController = WelcomeViewController()
         welcomeViewController.modalPresentationStyle = .formSheet
-        welcomeViewController.setLabelText(id: idTextField.text)
-        
+        welcomeViewController.configure(id: idTextField.text)
         self.present(welcomeViewController, animated: true)
     }
     
     private func pushToWelcomeVC() {
         let welcomeViewController = WelcomeViewController()
-        welcomeViewController.setLabelText(id: idTextField.text)
+        welcomeViewController.configure(id: idTextField.text)
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
     }
-    
 }
-
