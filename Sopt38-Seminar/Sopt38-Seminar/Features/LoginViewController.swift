@@ -3,7 +3,7 @@ import UIKit
 class LoginViewController: UIViewController {
 
     private let titleLabel : UILabel = {
-        let label = UILabel(frame: CGRect(x : 76, y : 164, width: 240, height: 44))
+        let label = UILabel(frame: CGRect(x : 76, y : 169, width: 240, height: 80))
         label.text = "동네라서 가능한 모든것\n당근에서 가까운 이웃과 함께해요."
         label.textColor = .black
         label.textAlignment = .center
@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
     }()
     
     private let autoLoginLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 20, y: 490, width: 120, height: 30))
+        let label = UILabel(frame: CGRect(x: 20, y: 399, width: 100, height: 24))
         label.text = "자동 로그인"
         label.textColor = .black
         label.font = .Pretendard.medium(ofSize: 14)
@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
     }()
     
     private let autoLoginSwitch: UISwitch = {
-        let toggle = UISwitch(frame: CGRect(x: 300, y: 490, width: 0, height: 0))
+        let toggle = UISwitch(frame: CGRect(x: 295, y: 395, width: 49, height: 31))
         
         toggle.isOn = false
         toggle.onTintColor = UIColor.orange
@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var loginButton : UIButton = {
-        let button = UIButton(frame : CGRect(x: 20, y: 422, width: 335, height: 52))
+        let button = UIButton(frame : CGRect(x: 20, y: 515, width: 335, height: 57))
         button.backgroundColor = UIColor(red: 255/255, green: 111/255, blue: 15/255, alpha: 1)
         button.setTitle("로그인하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
