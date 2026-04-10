@@ -31,6 +31,7 @@ class WelcomeViewController: UIViewController {
         button.setTitle("메인으로", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.addTarget(self, action: #selector(backToLoginButtonDidTap), for: .touchUpInside)
         button.layer.cornerRadius = 3
         return button
     }()
@@ -41,6 +42,7 @@ class WelcomeViewController: UIViewController {
         button.setTitle("다시 로그인하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.addTarget(self, action: #selector(backToLoginButtonDidTap), for: .touchUpInside)
         button.layer.cornerRadius = 5
         return button
     }()
@@ -56,6 +58,15 @@ class WelcomeViewController: UIViewController {
         [logoImage, welcomeLabel, mainButton, backLoginButton].forEach{self.view.addSubview($0)}
     }
     
+
+    @objc
+    private func backToLoginButtonDidTap(){
+        if (self.navigationController == nil){
+            self.dismiss(animated: true)
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
 
     func setLabelText(id: String?){
         self.id = id
