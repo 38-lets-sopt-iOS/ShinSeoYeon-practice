@@ -20,6 +20,8 @@ class LoginViewController: UIViewController {
         textField.font = .Pretendard.semiBold(ofSize: 14)
         textField.backgroundColor = .lightGray
         textField.layer.cornerRadius = 5
+        textField.clearButtonMode = .whileEditing
+        
         return textField
     }()
     
@@ -31,6 +33,8 @@ class LoginViewController: UIViewController {
         textField.font = .Pretendard.semiBold(ofSize: 14)
         textField.backgroundColor = .lightGray
         textField.layer.cornerRadius = 5
+        textField.clearButtonMode = .whileEditing
+        
         return textField
     }()
     

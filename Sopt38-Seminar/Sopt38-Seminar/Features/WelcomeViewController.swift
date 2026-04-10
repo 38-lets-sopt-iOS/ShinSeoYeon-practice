@@ -21,7 +21,7 @@ class WelcomeViewController: UIViewController {
         label.text = "??님\n반가워요!"
         label.textAlignment = .center
         label.numberOfLines = 2
-        label.font = .Pretendard.extraBold(ofSize: 25)
+        label.font = .Pretendard.extraBold(ofSize: 20)
         return label
     }()
     
