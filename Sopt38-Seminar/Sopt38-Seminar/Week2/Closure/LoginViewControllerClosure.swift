@@ -63,10 +63,14 @@ class LoginViewController_Closure: UIViewController {
     
     private func pushToWelcomeVC() {
         let welcomeViewController = WelcomeViewController_Closure()
+        
         welcomeViewController.id = idTextField.text
+        
+        // 여기서 데이터 받음
         welcomeViewController.backToLoginCompletion = { [weak self] data in
             guard let self else { return }
-            print("클로저로 받아온 데이터는 바로 \(data) 임!!")
+            print("\(data) 를 받아옴")
+            
             self.titleLabel.text = "\(data)님, 다시 로그인해야해요."
             self.idTextField.text = ""
             self.passwordTextField.text = ""
