@@ -1,12 +1,18 @@
 import UIKit
 
-class WelcomeViewControllerOptional: UIViewController {
+protocol RetryLoginDelegateProtocol: AnyObject {
+    func retryLogin(id: String)
+}
+
+class WelcomeViewControllerDelegate: UIViewController {
+    
+    weak var delegate: RetryLoginDelegateProtocol?
     
     var id: String? = nil
     
     private let logoImage : UIImageView = {
         let image = UIImageView(frame: CGRect(x: 112, y: 87, width: 150, height: 150))
-        // image.image = .welcome
+        //image.image = .welcome
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -57,6 +63,10 @@ class WelcomeViewControllerOptional: UIViewController {
 
     @objc
     private func backToLoginButtonDidTap(){
+        if let id = id {
+            delegate?.retryLogin(id: id)
+        }
+        
         if (self.navigationController == nil){
             self.dismiss(animated: true)
         } else {

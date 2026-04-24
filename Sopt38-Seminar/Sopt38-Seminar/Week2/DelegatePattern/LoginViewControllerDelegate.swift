@@ -1,6 +1,6 @@
 import UIKit
 
-class LoginViewControllerOptional: UIViewController {
+class LoginViewControllerDelegate: UIViewController {
 
     private let titleLabel : UILabel = {
         let label = UILabel(frame: CGRect(x : 69, y : 163, width: 236, height: 44))
@@ -45,6 +45,12 @@ class LoginViewControllerOptional: UIViewController {
         return button
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        idTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -58,20 +64,21 @@ class LoginViewControllerOptional: UIViewController {
     
     @objc
     private func loginButtonDidTapped() {
-//        presentToWelcomeVC()
         pushToWelcomeVC()
     }
     
-    private func presentToWelcomeVC() {
-        let welcomeViewController = WelcomeViewControllerOptional()
-        welcomeViewController.modalPresentationStyle = .formSheet
-        welcomeViewController.id = idTextField.text
-        self.present(welcomeViewController, animated: true)
-    }
-    
     private func pushToWelcomeVC() {
-        let welcomeViewController = WelcomeViewControllerOptional()
+        let welcomeViewController = WelcomeViewControllerDelegate()
         welcomeViewController.id = idTextField.text
+        welcomeViewController.delegate = self
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
+    }
+}
+
+extension LoginViewControllerDelegate: RetryLoginDelegateProtocol {
+    func retryLogin(id: String) {
+        idTextField.text = ""
+        passwordTextField.text = ""
+        titleLabel.text = "\(id)님, 다시 로그인해야해요!"
     }
 }
