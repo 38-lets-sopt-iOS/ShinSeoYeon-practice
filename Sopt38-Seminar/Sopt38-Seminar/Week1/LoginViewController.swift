@@ -8,7 +8,7 @@ class LoginViewController: UIViewController {
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 2
-        label.font = .Pretendard.bold(ofSize: 18)
+        label.font = .pretendard(size: 18, weight: .bold)
         return label
     }()
     
@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 23, height: 0))
         textField.leftViewMode = .always
         textField.placeholder = "아이디"
-        textField.font = .Pretendard.semiBold(ofSize: 14)
+        textField.font = .pretendard(size: 14, weight: .semibold)
         textField.backgroundColor = UIColor(red: 221/255, green: 222/255, blue: 227/255, alpha: 1)
         textField.layer.cornerRadius = 5
         textField.clearButtonMode = .whileEditing
@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 23, height: 0))
         textField.leftViewMode = .always
         textField.placeholder = "비밀번호"
-        textField.font = .Pretendard.semiBold(ofSize: 14)
+        textField.font = .pretendard(size: 14, weight: .semibold)
         textField.backgroundColor = UIColor(red: 221/255, green: 222/255, blue: 227/255, alpha: 1)
         textField.layer.cornerRadius = 5
         textField.clearButtonMode = .whileEditing
@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
         let label = UILabel(frame: CGRect(x: 20, y: 399, width: 100, height: 24))
         label.text = "자동 로그인"
         label.textColor = .black
-        label.font = .Pretendard.medium(ofSize: 14)
+        label.font = .pretendard(size: 14, weight: .medium)
         return label
     }()
     
@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
         button.backgroundColor = UIColor(red: 255/255, green: 111/255, blue: 15/255, alpha: 1)
         button.setTitle("로그인하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = .Pretendard.bold(ofSize: 18)
+        button.titleLabel?.font = .pretendard(size: 18, weight: .bold)
         button.addTarget(self, action: #selector(loginButtonDidTapped), for: .touchUpInside)
         button.layer.cornerRadius = 5
         return button
@@ -71,16 +71,14 @@ class LoginViewController: UIViewController {
     }
 
     private func setLayout() {
-        [
+        view.addSubviews(
             titleLabel,
             idTextField,
             passwordTextField,
             autoLoginLabel,
             autoLoginSwitch,
             loginButton
-        ].forEach {
-            self.view.addSubview($0)
-        }
+        )
     }
     
     @objc
