@@ -7,3 +7,10 @@ extension UIView {
         }
     }
 }
+extension UITextField {
+    func addLeftPadding(_ width: CGFloat = 20) {
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: self.frame.height))
+            self.leftView = paddingView
+            self.leftViewMode = ViewMode.always
+        }
+}

@@ -1,0 +1,12 @@
+//
+//  Config.xcconfig
+//  Sopt38-Seminar
+//
+//  Created by 신서연 on 5/2/26.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+
+BASE_URL = https:/$()/sopt-server.p-e.kr
