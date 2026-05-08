@@ -118,11 +118,12 @@ extension LoginAPIViewController {
                     throw NetworkError.responseDecodingError
                 }
 
-                print("로그인 성공, userId: \(userId)")
+                print("로그인 성공")
 
-                showAlert(
-                    title: "로그인 성공",
-                    message: response.message
+                let userInfoViewController = UserInfoViewController(userId: userId)
+                navigationController?.pushViewController(
+                    userInfoViewController,
+                    animated: true
                 )
             } catch {
                 showAlert(
