@@ -216,18 +216,18 @@ extension UserInfoViewController {
                 updateUI(user: user)
                 
                 showAlert(
-                    title: "수정 성공",
-                    message: "개인정보 수정에 성공했습니다!"
+                    title: "유저 정보를 수정했습니다",
+                    message: "수정 완료"
                 )
                 
-                print("개인정보 수정에 성공했습니다!")
+                print("개인정보 수정에 성공했습니다")
             } catch {
                 showAlert(
                     title: "수정 실패",
                     message: error.localizedDescription
                 )
                 
-                print("개인정보 수정에 실패했습니다!", error)
+                print("개인정보 수정에 실패했습니다", error)
             }
         }
     }
