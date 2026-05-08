@@ -53,7 +53,7 @@ final class LoginAPIViewController: UIViewController {
 
     private func setLayout() {
         idTextField.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(150)
+            $0.top.equalToSuperview().inset(200)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(50)
         }
