@@ -75,10 +75,14 @@ final class UserInfoViewController: UIViewController {
                 }
             }
         
+        // 로그인 텍스트 필드, 파트 텍스트 필드는 둘다 회색
+        loginIdTextField.backgroundColor = .systemGray6
+        partTextField.backgroundColor = .systemGray6
+        
         loginIdTextField.isEnabled = false
         partTextField.isEnabled = false
         
-        ageTextField.keyboardType = .numberPad
+        ageTextField.keyboardType = .numberPad // 키보드 타입변경
         
         editButton.do {
             $0.setTitle("수정하기", for: .normal)
