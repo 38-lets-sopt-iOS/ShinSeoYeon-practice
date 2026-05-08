@@ -17,6 +17,10 @@ final class UserInfoViewController: UIViewController {
     
     private let editButton = UIButton()
     
+    private var name: String = ""
+    private var email: String = ""
+    private var age: Int?
+    
     init(userId: Int) {
         self.userId = userId
         super.init(nibName: nil, bundle: nil)
@@ -32,6 +36,7 @@ final class UserInfoViewController: UIViewController {
         setUI()
         setStyle()
         setLayout()
+        setAddTarget()
         getUserInfo()
     }
     
@@ -72,6 +77,8 @@ final class UserInfoViewController: UIViewController {
         
         loginIdTextField.isEnabled = false
         partTextField.isEnabled = false
+        
+        ageTextField.keyboardType = .numberPad
         
         editButton.do {
             $0.setTitle("수정하기", for: .normal)
@@ -125,18 +132,44 @@ final class UserInfoViewController: UIViewController {
         }
     }
     
+    private func setAddTarget() {
+        nameTextField.addTarget(
+            self,
+            action: #selector(textFieldDidEditingChanged(_:)),
+            for: .editingChanged
+        )
+        
+        emailTextField.addTarget(
+            self,
+            action: #selector(textFieldDidEditingChanged(_:)),
+            for: .editingChanged
+        )
+        
+        ageTextField.addTarget(
+            self,
+            action: #selector(textFieldDidEditingChanged(_:)),
+            for: .editingChanged
+        )
+        
+        editButton.addTarget(
+            self,
+            action: #selector(editButtonDidTap),
+            for: .touchUpInside
+        )
+    }
+    
     private func getUserInfo() {
         Task {
             do {
                 let user = try await UserService.shared.getUserInfo(userId: userId)
                 updateUI(user: user)
-                print("개인정보 조회 성공")
+                print("개인정보 조회에 성공했습니다!")
             } catch {
                 showAlert(
-                    title: "개인정보 조회 실패",
+                    title: "개인정보 조회에 실패했습니다!",
                     message: error.localizedDescription
                 )
-                print("개인정보 조회 실패", error)
+                print("개인정보 조회에 실패했습니다!", error)
             }
         }
     }
@@ -147,6 +180,56 @@ final class UserInfoViewController: UIViewController {
         emailTextField.text = user.email
         ageTextField.text = "\(user.age)"
         partTextField.text = user.part
+        
+        name = user.name
+        email = user.email
+        age = user.age
+    }
+}
+
+extension UserInfoViewController {
+    @objc
+    private func textFieldDidEditingChanged(_ textField: UITextField) {
+        switch textField {
+        case nameTextField:
+            name = textField.text ?? ""
+        case emailTextField:
+            email = textField.text ?? ""
+        case ageTextField:
+            age = Int(textField.text ?? "")
+        default:
+            return
+        }
+    }
+    
+    @objc
+    private func editButtonDidTap() {
+        Task {
+            do {
+                let user = try await UserService.shared.patchUserInfo(
+                    userId: userId,
+                    name: name,
+                    email: email,
+                    age: age
+                )
+                
+                updateUI(user: user)
+                
+                showAlert(
+                    title: "수정 성공",
+                    message: "개인정보 수정에 성공했습니다!"
+                )
+                
+                print("개인정보 수정에 성공했습니다!")
+            } catch {
+                showAlert(
+                    title: "수정 실패",
+                    message: error.localizedDescription
+                )
+                
+                print("개인정보 수정에 실패했습니다!", error)
+            }
+        }
     }
     
     private func showAlert(
