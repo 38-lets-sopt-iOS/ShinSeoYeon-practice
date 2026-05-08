@@ -17,3 +17,9 @@ struct UserInfoData: Decodable {
     let age: Int
     let part: String
 }
+
+struct UserUpdateRequestDTO: Encodable {
+    let name: String?
+    let email: String?
+    let age: Int?
+}
