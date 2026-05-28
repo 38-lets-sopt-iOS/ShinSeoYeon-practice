@@ -11,7 +11,7 @@ import SwiftUI
 struct Sopt38_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            MessageListView(messages: Message.messageDummy)
+            NavigationPathPractice()
         }
     }
 }
